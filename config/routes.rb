@@ -1,4 +1,4 @@
 Shoes::Application.routes.draw do
-  get "login/show"
+  root to: 'users#new'
   resources :users
 end
