@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
 
   before_create :downcase
 
+  has_many :sales, class_name: 'Product', foreign_key: 'seller_id'
+  has_many :purchases, class_name: 'Product', foreign_key: 'buyer_id'
+
   private
     def downcase
       self.email.downcase!
