@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   end
 
   def new
+    if logged_in?
+      redirect_to "/users/#{current_user.id}"
+    end
+
     @user = User.new
   end
 

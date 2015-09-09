@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
   has_many :sales, class_name: 'Product', foreign_key: 'seller_id'
   has_many :purchases, class_name: 'Product', foreign_key: 'buyer_id'
 
+  def unsold_products
+    self.sales.where(buyer_id: nil)
+  end
+
+  def sold_products
+    self.sales - self.unsold_products
+  end
+
   private
     def downcase
       self.email.downcase!
