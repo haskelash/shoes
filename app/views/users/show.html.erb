@@ -31,12 +31,12 @@
         <th class="col-md-3">Amount</th>
         <th class="col-md-3">Action</th>
       </tr>
-      <% current_user.unsold_products.each do |sale| %>
+      <% current_user.unsold_products.each do |product| %>
       <tr>
-        <td class="col-md-3"><%= sale.name %></td>
-        <td class="col-md-3"><%= sale.created_at.strftime('%b %d, %Y') %></td>
-        <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
-        <td class="col-md-3"><%= link_to "Remove", "/products/destroy/#{sale.id}", method: "delete" %></td>
+        <td class="col-md-3"><%= product.name %></td>
+        <td class="col-md-3"><%= product.created_at.strftime('%b %d, %Y') %></td>
+        <td class="col-md-3"><%= number_to_currency(product.price) %></td>
+        <td class="col-md-3"><%= link_to "Remove", "/products/destroy/#{product.id}", method: "delete" %></td>
       </tr>
       <% end %>
     </table>
@@ -53,13 +53,13 @@
         <th class="col-md-3">Buyer</th>
         <th class="col-md-3">Amount</th>
       </tr>
-      <% current_user.sold_products.each do |sale| %>
-      <% buyer = User.find(sale.buyer_id) %>
+      <% current_user.sold_products.each do |product| %>
+      <% buyer = User.find(product.buyer_id) %>
       <tr>
-        <td class="col-md-3"><%= sale.name %></td>
-        <td class="col-md-3"><%=  %></td>
+        <td class="col-md-3"><%= product.name %></td>
+        <td class="col-md-3"><%= product.bought_at.strftime('%b %d, %Y') if product.bought_at %></td>
         <td class="col-md-3"><%=  "#{buyer.first_name}  #{buyer.last_name}" %></td>
-        <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
+        <td class="col-md-3"><%= number_to_currency(product.price) %></td>
       </tr>
       <% end %>
     </table>
@@ -76,13 +76,13 @@
         <th class="col-md-3">Seller</th>
         <th class="col-md-3">Amount</th>
       </tr>
-      <% current_user.purchases.each do |sale| %>
-      <% seller = User.find(sale.seller_id) %>
+      <% current_user.purchases.each do |product| %>
+      <% seller = User.find(product.seller_id) %>
       <tr>
-        <td class="col-md-3"><%= sale.name %></td>
-        <td class="col-md-3"><%=  %></td>
+        <td class="col-md-3"><%= product.name %></td>
+        <td class="col-md-3"><%= product.bought_at.strftime('%b %d, %Y') if product.bought_at %></td>
         <td class="col-md-3"><%=  "#{seller.first_name}  #{seller.last_name}" %></td>
-        <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
+        <td class="col-md-3"><%= number_to_currency(product.price) %></td>
       </tr>
       <% end %>
     </table>

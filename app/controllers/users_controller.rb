@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def buy
     @product = Product.find(params[:id])
     @product.buyer_id = current_user.id
+    @product.bought_at = DateTime.now
 
     if @product.save
       flash[:success] = "Success: purchase complete."
