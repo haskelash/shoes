@@ -23,7 +23,7 @@
   <div class="row top-buffer"></div>
 
   <div class="row">
-    <p>Your products that are not yet sold:</p>
+    <h5>Your products that are not yet sold:</h5>
     <table class="table table-striped">
       <tr>
         <th class="col-md-3">Product</th>
@@ -45,7 +45,7 @@
   <div class="row top-buffer"></div>
 
   <div class="row">
-    <p>Sales</p>
+    <h5>Sales</h5>
     <table class="table table-striped">
       <tr>
         <th class="col-md-3">Product</th>
@@ -73,7 +73,7 @@
   <div class="row top-buffer"></div>
 
   <div class="row">
-    <p>Purchases</p>
+    <h5>Purchases</h5>
     <table class="table table-striped">
       <tr>
         <th class="col-md-3">Product</th>
@@ -97,5 +97,5 @@
     <h5 class="col-md-3">Total: <%= current_user.purchases.each.map(&:price).inject(:+) %></h5>
   </div>
 <% else %>
-  <p>Looks like you're not logged in. Sign up or log in <%= link_to "here", "/login" %>.</p>
+  <h5>Looks like you're not logged in. Sign up or log in <%= link_to "here", "/login" %>.</h5>
 <% end %>

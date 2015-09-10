@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
       flash[:danger] = "Failure: product not added."
     end
 
-    redirect_to "/users/#{current_user.id}"
+    redirect_to "/dashboard"
 
   end
 
@@ -27,6 +27,6 @@ class ProductsController < ApplicationController
       flash[:danger] = "Failure: product not deleted."
     end
 
-    redirect_to "/users/#{current_user.id}"
+    redirect_to "/dashboard"
   end
 end

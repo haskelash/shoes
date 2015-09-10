@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @product = Product.new
   end
 
   def new
     if logged_in?
-      redirect_to "/users/#{current_user.id}"
+      redirect_to "/dashboard"
     end
 
     @user = User.new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Success: account created."
-      redirect_to @user
+      redirect_to '/dashboard'
     else
       render 'new'
     end
@@ -40,6 +40,6 @@ class UsersController < ApplicationController
       flash[:failure] = "Failure: purchase not complete."
     end
 
-    redirect_to "/users/#{current_user.id}"
+    redirect_to "/dashboard"
   end
 end

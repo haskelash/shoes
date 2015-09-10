@@ -3,7 +3,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-left">
         <% if logged_in? %>
-          <li><%= link_to "Hi, #{current_user.first_name}", "/users/#{current_user.id}" %></li>
+          <li><%= link_to "Hi, #{current_user.first_name}", "/dashboard" %></li>
         <% else %>
 
         <% end %>
@@ -12,7 +12,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <% if yield(:page) == "shoes" %>
-            <li><%= link_to "Go to Dashboard", "/users/#{current_user.id}", method: "get" %></li>
+            <li><%= link_to "Go to Dashboard", "/dashboard", method: "get" %></li>
           <% elsif yield(:page) == "dashboard" %>
             <li><%= link_to "Go to All Products", "/shoes", method: "get" %></li>
           <% end %>
