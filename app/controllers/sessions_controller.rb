@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.where(email: params[:session][:email].downcase).first
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
-      flash[:success] = "Success: account created."
+      flash[:success] = "Success: Welcome back, #{@user.first_name}."
       redirect_to @user
     else
       flash.now[:danger] = 'Invalid email/password combination'

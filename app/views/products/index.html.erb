@@ -18,7 +18,7 @@
         <td class="col-md-4"><%= product.name %></td>
         <td class="col-md-3"><%= "#{seller.first_name} #{seller.last_name}" %></td>
         <td class="col-md-3"><%= product.created_at.strftime('%b %d, %Y') %></td>
-        <td class="col-md-2"><%= "$#{product.price}.00" %></td>
+        <td class="col-md-2"><%= number_to_currency(product.price) %></td>
         <td class="col-md-1"><%=  %></td>
       </tr>
       <% end %>

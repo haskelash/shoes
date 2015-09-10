@@ -4,7 +4,7 @@
 <% if logged_in? %>
   <div class="row">
     <div class="col-md-2">
-      <%= form_for(Product.new) do |f| %>
+      <%= form_for(@product) do |f| %>
         <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: "form-control" %>
@@ -35,7 +35,7 @@
       <tr>
         <td class="col-md-3"><%= sale.name %></td>
         <td class="col-md-3"><%= sale.created_at.strftime('%b %d, %Y') %></td>
-        <td class="col-md-3"><%= "$#{sale.price}.00" %></td>
+        <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
         <td class="col-md-3"><%=  %></td>
       </tr>
       <% end %>
@@ -59,7 +59,7 @@
         <td class="col-md-3"><%= sale.name %></td>
         <td class="col-md-3"><%=  %></td>
         <td class="col-md-3"><%=  "#{buyer.first_name}  #{buyer.last_name}" %></td>
-        <td class="col-md-3"><%= "$#{sale.price}.00" %></td>
+        <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
       </tr>
       <% end %>
     </table>
@@ -82,7 +82,7 @@
         <td class="col-md-3"><%= sale.name %></td>
         <td class="col-md-3"><%=  %></td>
         <td class="col-md-3"><%=  "#{seller.first_name}  #{seller.last_name}" %></td>
-        <td class="col-md-3"><%= "$#{sale.price}.00" %></td>
+        <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
       </tr>
       <% end %>
     </table>
