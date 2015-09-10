@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   def index
-
   end
 
   def create
@@ -17,5 +16,17 @@ class ProductsController < ApplicationController
 
     redirect_to "/users/#{current_user.id}"
 
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+
+    if @product.destroy
+      flash[:success] = "Success: product deleted."
+    else
+      flash[:danger] = "Failure: product not deleted."
+    end
+
+    redirect_to "/users/#{current_user.id}"
   end
 end

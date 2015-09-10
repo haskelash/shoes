@@ -36,7 +36,7 @@
         <td class="col-md-3"><%= sale.name %></td>
         <td class="col-md-3"><%= sale.created_at.strftime('%b %d, %Y') %></td>
         <td class="col-md-3"><%= number_to_currency(sale.price) %></td>
-        <td class="col-md-3"><%=  %></td>
+        <td class="col-md-3"><%= link_to "Remove", "/products/destroy/#{sale.id}", method: "delete" %></td>
       </tr>
       <% end %>
     </table>
