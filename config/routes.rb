@@ -5,4 +5,5 @@ Shoes::Application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get    'shoes'   => 'products#index'
+  post   'buy/:id' => 'users#buy'
 end

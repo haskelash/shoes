@@ -28,4 +28,17 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def buy
+    @product = Product.find(params[:id])
+    @product.buyer_id = current_user.id
+
+    if @product.save
+      flash[:success] = "Success: purchase complete."
+    else
+      flash[:failure] = "Failure: purchase not complete."
+    end
+
+    redirect_to "/users/#{current_user.id}"
+  end
 end

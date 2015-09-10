@@ -12,14 +12,14 @@
         <th class="col-md-2">Amount</th>
         <th class="col-md-1">Action</th>
       </tr>
-      <% Product.all.each do |product| %>
+      <% Product.where("buyer_id IS NULL AND seller_id != #{current_user.id}").each do |product| %>
       <% seller = User.find(product.seller) %>
       <tr>
         <td class="col-md-4"><%= product.name %></td>
         <td class="col-md-3"><%= "#{seller.first_name} #{seller.last_name}" %></td>
         <td class="col-md-3"><%= product.created_at.strftime('%b %d, %Y') %></td>
         <td class="col-md-2"><%= number_to_currency(product.price) %></td>
-        <td class="col-md-1"><%=  %></td>
+        <td class="col-md-1"><%= link_to "Buy", "/buy/#{product.id}", method: "post"  %></td>
       </tr>
       <% end %>
     </table>
