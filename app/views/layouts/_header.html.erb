@@ -11,6 +11,11 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
+          <% if yield(:page) == "shoes" %>
+            <li><%= link_to "Go to Dashboard", "/users/#{current_user.id}", method: "get" %></li>
+          <% elsif yield(:page) == "dashboard" %>
+            <li><%= link_to "Go to All Products", "/shoes", method: "get" %></li>
+          <% end %>
           <li><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
 

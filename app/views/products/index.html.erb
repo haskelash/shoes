@@ -1,0 +1,30 @@
+<% provide(:title, "All Products") %>
+<% provide(:page, "shoes") %>
+
+<% if logged_in? %>
+  <div class="row">
+    <p class="text-center">All Products</p>
+    <table class="table table-striped">
+      <tr>
+        <th class="col-md-4">Product</th>
+        <th class="col-md-3">Seller</th>
+        <th class="col-md-3">Date Posted</th>
+        <th class="col-md-2">Amount</th>
+        <th class="col-md-1">Action</th>
+      </tr>
+      <% Product.all.each do |product| %>
+      <% seller = User.find(product.seller) %>
+      <tr>
+        <td class="col-md-4"><%= product.name %></td>
+        <td class="col-md-3"><%= "#{seller.first_name} #{seller.last_name}" %></td>
+        <td class="col-md-3"><%= product.created_at.strftime('%b %d, %Y') %></td>
+        <td class="col-md-2"><%= "$#{product.price}.00" %></td>
+        <td class="col-md-1"><%=  %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+<% else %>
+  <p>Looks like you're not logged in. Sign up or log in <%= link_to "here", "/login" %>.</p>
+<% end %>

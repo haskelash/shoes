@@ -1,3 +1,6 @@
+<% provide(:title, "Your Dashboard") %>
+<% provide(:page, "dashboard") %>
+
 <% if logged_in? %>
   <div class="row">
     <div class="col-md-2">
@@ -31,7 +34,7 @@
       <% current_user.unsold_products.each do |sale| %>
       <tr>
         <td class="col-md-3"><%= sale.name %></td>
-        <td class="col-md-3"><%= sale.created_at %></td>
+        <td class="col-md-3"><%= sale.created_at.strftime('%b %d, %Y') %></td>
         <td class="col-md-3"><%= "$#{sale.price}.00" %></td>
         <td class="col-md-3"><%=  %></td>
       </tr>
